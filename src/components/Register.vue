@@ -4,20 +4,22 @@
       <div class="card" style="width: 28rem">
         <div class="card-header">Register</div>
         <div class="card-body">
-          <form>
+          <form @submit="onSubmit">
             <div class="form-group">
               <label for="username">Username</label>
               <input
-                type="email"
+                v-model="user.username"
+                type="text"
                 class="form-control"
                 id="username"
-                placeholder="Enter email"
+                placeholder="Enter username"
               />
             </div>
             <br />
             <div class="form-group">
               <label for="email">Email address</label>
               <input
+                v-model="user.email"
                 type="email"
                 class="form-control"
                 id="email"
@@ -28,6 +30,7 @@
             <div class="form-group">
               <label for="passsword">Password</label>
               <input
+                v-model="user.password"
                 type="password"
                 class="form-control"
                 id="passsword"
@@ -39,7 +42,7 @@
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div> -->
             <br />
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <Button type="submit" style="btn btn-primary" text="Register" />
           </form>
         </div>
       </div>
@@ -48,7 +51,28 @@
 </template>
 
 <script>
+import Button from "@/components/Button";
+
 export default {
   name: "Register",
+  components: {
+    Button,
+  },
+
+  data() {
+    return {
+      user: {
+        username: "",
+        email: "",
+        password: "",
+      },
+    };
+  },
+
+  methods: {
+    onSubmit(e) {
+      e.preventDefault();
+    },
+  },
 };
 </script>
